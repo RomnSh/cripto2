@@ -1,0 +1,15 @@
+.add_button {
+    display: flex;
+    border-radius: 20px;
+    color: aliceblue;
+    background-color: rgb(129, 129, 148);
+    border-width: 0;
+    padding: 4px;
+    text-align: center;
+    margin-top: 8px;
+}
+
+.add_Icon {
+    font-size: 16px;
+    margin: 0px 3px 0px 0px;
+}

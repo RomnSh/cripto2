@@ -1,0 +1,13 @@
+.autoCompleteItem{
+    background-color: rgb(215, 214, 214);
+    margin: 2px;
+    border-radius: 6px;
+    padding: 4px;
+    font-size: 7px;
+    border: 0;
+    font-weight: bold;
+    margin-right: 5px;
+}
+.autoCompleteItem:first {
+    margin-left: 25px;
+}

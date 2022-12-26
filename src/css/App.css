@@ -1,0 +1,14 @@
+.App_form{
+    margin-left: 25px;
+}
+
+.card_fild {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    flex-wrap:  wrap;
+    border-style: solid;
+    border-width: 2px 0px;
+    border-color: rgb(146, 143, 149);
+    margin-top: 20px;
+}

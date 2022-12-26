@@ -1,0 +1,15 @@
+
+.searchform_ticker { 
+    margin: 10px 0px;
+}
+
+.search_input {
+    border-color: rgb(197, 194, 194);
+    border-radius: 6px;
+    border-width: 1px;
+    font-size: 12px;
+}
+
+.search_input:focus {
+    outline: 1px  rgb(157, 155, 155);
+  }
