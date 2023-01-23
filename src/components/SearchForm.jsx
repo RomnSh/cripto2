@@ -1,7 +1,7 @@
 import React from 'react';
 import '../css/searchForm.css'
 const SearchForm = ({formInputValue, addCardFromForm}) => {
-    const hendleNameChange = (event) =>{
+    const handlerNameChange = (event) =>{
         formInputValue(event.target.value)
     }
 
@@ -12,12 +12,12 @@ const SearchForm = ({formInputValue, addCardFromForm}) => {
 
     return ( 
     <form className= 'search_form' onSubmit={addCard}>
-        <h4 className= 'searchform_ticker'>Тікер</h4>
+        <h5 className= 'searchform_ticker'>Тікер</h5>
         <input 
             type="text"
             placeholder='Search your currency...'
             className='search_input'
-            onChange={hendleNameChange}
+            onChange={handlerNameChange}
             onSubmit={addCard}
         />
     </form>

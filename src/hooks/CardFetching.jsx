@@ -1,4 +1,3 @@
-import * as React from 'react';
 import { useState, useEffect } from 'react';
 
 const CardFetching = () => {
@@ -18,6 +17,7 @@ const CardFetching = () => {
       useEffect(() => {
         fetchCurrensy ()
       },[])
+
     return {currensy, loading }
 }
  

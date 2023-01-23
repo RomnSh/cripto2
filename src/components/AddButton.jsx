@@ -14,7 +14,7 @@ const AddButton = ({formValue, addCardFromForm}) => {
             onClick={addCardForm}
         >
             <IoIosAddCircleOutline className='add_Icon'/> 
-            <span> Додати</span>
+            <span className='add_button_text' > Додати</span>
         </button>
      );
 }

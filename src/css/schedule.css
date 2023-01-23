@@ -1,0 +1,48 @@
+.scheduleContainer {
+    position: relative;
+    display: flex;
+    flex-direction: row;
+    justify-content: left;
+    align-items: flex-end;
+    flex-wrap: nowrap;
+    height: 16em;
+    border: 1px solid gray;
+    border-width: 0px 0px 1px 1px;
+    margin: 50px 20px ;
+}
+
+.schedul_column {
+    width: 18px;
+    background-color: rgb(91, 30, 148);
+    margin-left: 5px;
+    margin-top: 20px;
+    border: 1px solid rgb(91, 30, 148);
+}
+
+.hideSchedule {
+    position: absolute;
+    top: -45px;
+    right: 3px;
+    font-size: 30px;
+    border: none;
+    color: gray;
+}
+
+.schedul_column_course {
+    display: none; 
+}
+
+.schedul_column:hover > .schedul_column_course {
+    display: block;
+    position: relative;
+    top: -18px;
+    font-size: 10px;
+    color: rgb(77, 70, 80);
+    transform: rotate(-45deg);
+}
+
+.schedul_column:hover {
+    background-color: blueviolet;
+    border: 1px solid rgb(19, 18, 19);
+}
+

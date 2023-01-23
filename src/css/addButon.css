@@ -2,7 +2,7 @@
     display: flex;
     border-radius: 20px;
     color: aliceblue;
-    background-color: rgb(129, 129, 148);
+    background-color: rgb(92, 92, 102);
     border-width: 0;
     padding: 4px;
     text-align: center;
@@ -13,3 +13,9 @@
     font-size: 16px;
     margin: 0px 3px 0px 0px;
 }
+
+.add_button_text {
+    font-size: 9px;
+    margin: 3px;
+}
+

@@ -7,6 +7,8 @@ import AutoCompleteItem from './components/AutoCompleteItem';
 import CardCurrency from './components/CardCarrensu';
 import WarningTiker from './components/WarningTiker';
 import AddButton from './components/AddButton';
+import Schedule from './components/Schedule';
+import {Context} from './Context'
 
 
 function App() {
@@ -16,9 +18,12 @@ function App() {
   const [choiceCurrensys, setchoiceCurrensys] = useState([])
   const [showWarning, setShowWarning] = useState(false)
   const [warningMssage, setWarningMssage] = useState('')
+  const [showSchedule, setshowSchedule] = useState(false)
+  const [selectedСard, setselectedСard] = useState('')
+  const [priceInTime, setPriceInTime] = useState([])
   
-  
-  const hendelSearchName = (searchFormValue) => {
+ 
+  const handlerSearchName = (searchFormValue) => {
     setFormValue(searchFormValue)
     setShowWarning (false)
     if (searchFormValue.trim().length > 1) {
@@ -44,58 +49,89 @@ function App() {
   const removeCard = (deleteElement) => {
     setShowWarning (false)
     setchoiceCurrensys(choiceCurrensys.filter(choiceCurrensys => choiceCurrensys[0] !== deleteElement))
+    if (deleteElement === selectedСard) {
+      setshowSchedule(false)
+    }
   }
 
   const addCardFromForm =(formValue) =>{
     const newCard = currensy.filter((currensy) =>{
         return currensy[0].toLowerCase() === formValue.toLowerCase()
       })
-      if (newCard.length >0) {
-        if (!choiceCurrensys.includes(newCard[0])) {
+      if (newCard.length >0 && !choiceCurrensys.includes(newCard[0])) {
         setchoiceCurrensys ([...choiceCurrensys, newCard[0]])
-      }else{
+      }else if (newCard.length >0) {
         setWarningMssage ('Такий тікер існує!!')
         setShowWarning (true)
-      }
       }else {
         setWarningMssage ("Невірне ім'я!!")
         setShowWarning (true)
     }
- 
 }
 
-  
+  const setselectedСardCourse = (course) => {
+    setPriceInTime(course)
+  }
+ 
+  const handlerSelectedСard = (e) => {
+    setshowSchedule(true)
+    setselectedСard (e.currentTarget.getAttribute('data-custom-id'))
+  }
+
+  const hideSchedule = () => {
+    setshowSchedule(false)
+  }
+
   return (
-    <div className="App">
-      {loading && <LoaderSpiner/>}
-      <div className='App_form'>
-        <SearchForm 
-        formInputValue ={hendelSearchName}
-        addCardFromForm = {addCardFromForm}
-        />
-        {showWarning && <WarningTiker warningMssage = {warningMssage}/>}
-        { loading ||  filterCurrensys.map(currens => 
-          <AutoCompleteItem         
-          currens = {currens[0]} 
-          addCard = {addNewCard}
-          key ={currens[1].Id}/> 
-          )}
-          <AddButton 
-          formValue ={formValue}
-          addCardFromForm = {addCardFromForm}
-          />
+    <Context.Provider value={setselectedСardCourse}>
+      <div className="App">
+        {loading && <LoaderSpiner/>}
+        <div className='App_form'>
+          {loading || <SearchForm 
+            formInputValue = {handlerSearchName}
+            addCardFromForm = {addCardFromForm}
+          />}
+          {filterCurrensys.length>0 && 
+          <div className='autoCompleteContainer'> 
+            {loading ||  filterCurrensys.map(currens => 
+              <AutoCompleteItem         
+              currens = {currens[0]} 
+              addCard = {addNewCard}
+              key ={currens[1].Id}
+              
+              /> 
+            )}
+          </div>}
+          
+            {showWarning && <WarningTiker warningMssage = {warningMssage}/>}
+            {loading || <AddButton 
+            formValue ={formValue}
+            addCardFromForm = {addCardFromForm}
+            />}
+        </div>
+        
+        {choiceCurrensys.length>0 && <div 
+        className='card_fild'
+        
+        > 
+          {choiceCurrensys.map(choiceCurrensys => 
+            <CardCurrency          
+            currens = {choiceCurrensys[0]} 
+            key = {choiceCurrensys[1].Id}
+            remove ={removeCard}
+            onClick = {handlerSelectedСard}
+            selectedСard = {selectedСard}
+            
+            /> 
+          )} 
+        </div>}
+          {showSchedule && <Schedule 
+          // selectedСard ={selectedСard}
+          courseInTime ={priceInTime}
+          hideSchedule = {hideSchedule}
+        />}
       </div>
-      
-      { choiceCurrensys.length>0 && <div className='card_fild'> 
-        {choiceCurrensys.map(choiceCurrensys => 
-          <CardCurrency          
-          currens = {choiceCurrensys[0]} 
-          key ={choiceCurrensys[1].Id}
-          remove ={removeCard}
-          /> 
-        )} 
-      </div>}
-    </div>
+    </Context.Provider>
   );
 }
 

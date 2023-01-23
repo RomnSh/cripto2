@@ -1,21 +1,37 @@
 .card_container {
-    margin: 20px;
+    margin: 10px;
     display: flex;
     flex-direction: column;
     align-items: center;
-    width: 60mm;
-    border-radius: 15px;
+    width: 15em;
+    border-radius: 5px;
     border:solid;
-    border-color: rgb(227, 225, 225);
-    border-width: 0px 0px 1px 0px;
+    border-color: rgb(255, 255, 255);
+    border-bottom: 1px solid rgb(228, 226, 226);
+}
+
+.card_container:hover {
+    border: 2px solid rebeccapurple;
 }
 
 .delet_button {
     display: flex;
     justify-content: center;
     margin: 5px;
+    margin-top: 30px;
     border-width: 0;
     color: rgb(153, 150, 150);
-    border-radius: 8px;
+    background-color: white ;
     padding: 5px;
+    font-size: 12px;
+}
+
+.card_currency_title, .card_currency_course {
+    margin: 1px;
+}
+
+.card_currency_title {
+    font-size: 10px;
+    font-weight: bold;
+    color: gray;
 }
